@@ -74,7 +74,9 @@ class Full_Process(unittest.TestCase):
         driver.find_element_by_link_text("确认hold房").click()
         # 确认hold房
         driver.implicitly_wait(5)
-        driver.find_element_by_xpath("//*[@id='layui-layer3']/div[3]/a[2]").click()
+        # driver.find_element_by_xpath("//*[@id='layui-layer3']/div[3]/a[2]").click()
+        #临时测试用元素修改
+        driver.find_element_by_xpath("//*[@id='layui-layer2']/div[3]/a[2]").click()
         time.sleep(3)
         driver.refresh()
         # 验证状态
