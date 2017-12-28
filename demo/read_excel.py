@@ -2,23 +2,16 @@
 import xlrd
 import xlwt
 
-def read_excel():
-    workbook = xlrd.open_workbook(r'..\read_excel.xlsx')
-    print(workbook.sheet_names())
-
-    sheet2 = workbook.sheet_by_index(0)
-    # sheet2 = workbook.sheet_by_name('Sheet1')
-
-    print(sheet2.name,sheet2.nrows,sheet2.ncols)
-
-    rows = sheet2.row_values(0)
-    cols = sheet2.col_values(0)
-    print(rows)
-    print(cols)
-    print(sheet2.cell(0,0).value)
-    print(sheet2.cell_value(0,0))
-    print(sheet2.row(0)[0].value)
-    print(sheet2.cell(0,0).ctype)
+def read_exc():
+    workbook = xlrd.open_workbook(r'..\error_login.xls')
+    # print(workbook.sheet_names())
+    # gm_hotel = workbook.sheet_by_index(0)
+    gm_hotel = workbook.sheet_by_name('国民酒店')
+    list1 = []
+    for i in range(2,gm_hotel.nrows):
+        for j in range (1,3):
+            list1.append(gm_hotel.cell(i,j).value)
+    return list1
 
 def wrilt_excel():
     f = xlwt.Workbook()
@@ -36,5 +29,5 @@ def wrilt_excel():
     f.save('..\demo1.xls')
 
 if __name__ == '__main__':
-    wrilt_excel()
+    print(read_exc())
 
