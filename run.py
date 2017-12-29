@@ -21,6 +21,12 @@ def suite3():
     print("<现在执行退款用例集合>")
     return suiteTest
 
+# def suite4():
+#     suiteTest = unittest.TestSuite()
+#     suiteTest.addTest(order_refund.Order_Refund('hotel_refund'))
+#     print("<现在执行退款用例集合>")
+#     return suiteTest
+
 def AllSuite():
     # allTest = unittest.TextTestResult(suite1(),suite2())
     # print("suite1,suit2 执行")
