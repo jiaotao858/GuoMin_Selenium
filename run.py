@@ -1,5 +1,6 @@
 import unittest
 from import_pro import full_process,order_pay,order_refund
+from demo import test_login
 
 def suite1():
     suiteTest = unittest.TestSuite()
@@ -21,6 +22,13 @@ def suite3():
     print("<现在执行退款用例集合>")
     return suiteTest
 
+def suite4():
+    suiteTest = unittest.TestSuite()
+    suiteTest.addTest(test_login.MyTestCase('read_csv_test'))
+    suiteTest.addTest(test_login.MyTestCase('login_test'))
+    print("<=================================>")
+    return suiteTest
+
 def AllSuite():
     # allTest = unittest.TextTestResult(suite1(),suite2())
     # print("suite1,suit2 执行")
@@ -30,4 +38,4 @@ def AllSuite():
 
 if __name__ == '__main__':
     runner = unittest.TextTestRunner()
-    runner.run(suite2())
+    runner.run(suite4())
