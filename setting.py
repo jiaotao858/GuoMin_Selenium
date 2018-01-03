@@ -5,8 +5,8 @@ import time,os
 # 设置图片保存路径
 localday = time.strftime("%Y-%m-%d", time.localtime())
 localtime = time.strftime("%Y-%m-%d %H%M%S", time.localtime())
-filename = "C:\\Users\\allonshore\\Desktop\\text\\" + localday + "\\" + localtime + "\\"
-# filename = "C:\\Users\\jiaotao\\Desktop" + localday + "\\"+localtime+"\\"
+# filename = "C:\\Users\\allonshore\\Desktop\\text\\" + localday + "\\" + localtime + "\\"
+filename = "C:\\Users\\jiaotao\\Desktop" + localday + "\\"+localtime+"\\"
 if os.path.exists(filename) == False:
     os.makedirs(filename)
 
