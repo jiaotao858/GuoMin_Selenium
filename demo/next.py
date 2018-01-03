@@ -26,25 +26,22 @@ def login_t():
         ps_locator = '/html/body/div/div[2]/form/div[2]/input'
         ent_locator = '/html/body/div/div[2]/form/div[4]/div/a'
         toast_locator = 'layui-layer-content'
-        # err_locator = '//*[@id="layui-layer13"]/div[2]'
-        # yes_locator1 ='//*[@id="layui-layer3"]/div[3]/a'
-        # yes_locator ='layui-layer-shade3'
-        # yes_locator ='账号或密码错误'
         driver.find_element(By.XPATH,us_locator).clear()
         driver.find_element(By.XPATH,ps_locator).clear()
         driver.find_element(By.XPATH,us_locator).send_keys(li[i][1])
         driver.find_element(By.XPATH,ps_locator).send_keys(li[i][2])
         driver.find_element(By.XPATH,ent_locator).click()
         time.sleep(2)
-        try:
-            WebDriverWait(driver,5,0.5).until(EC.text_to_be_present_in_element(By.CLASS_NAME,'layui-layer-title'),'信息')
-            js = 'var q = document.getElementsByClassName("layui-layer-btn0")[0].click();'
-            driver.execute_script(js)
-            print("11111111")
-        except:
-            print(driver.find_element(By.CLASS_NAME,toast_locator).text)
+        # try:
+        #     WebDriverWait(driver,5,0.5).until(EC.text_to_be_present_in_element(By.CLASS_NAME,'layui-layer-title'),'信息')
+        #     js = 'var q = document.getElementsByClassName("layui-layer-btn0")[0].click();'
+        #     driver.execute_script(js)
+        #     print("11111111")
+        # except:
+        #     print(driver.find_element(By.CLASS_NAME,toast_locator).text)
         # finally:
         #     driver.quit()
+        assert driver.find_element(By.CLASS_NAME,'layui-layer-title','信息') == True
 
 if __name__ == '__main__':
     # read_csv()
