@@ -1,6 +1,7 @@
 import unittest
 from import_pro import full_process,order_pay,order_refund
-from demo import test_login
+from hotel_test import hotel_login
+from ebooking_test import ebooking_login
 
 def suite1():
     suiteTest = unittest.TestSuite()
@@ -24,9 +25,9 @@ def suite3():
 
 def suite4():
     suiteTest = unittest.TestSuite()
-    suiteTest.addTest(test_login.MyTestCase('read_csv_test'))
-    suiteTest.addTest(test_login.MyTestCase('login_test'))
-    print("<=================================>")
+    # suiteTest.addTest(hotel_login.Hotel_Login('login_text'))
+    suiteTest.addTest(ebooking_login.Ebooking_Login('login_text'))
+    print("<现在执行登录用例集合>")
     return suiteTest
 
 def AllSuite():

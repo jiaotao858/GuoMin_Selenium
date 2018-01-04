@@ -1,14 +1,34 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import time,os
+import time,os,csv
 
 # 设置图片保存路径
 localday = time.strftime("%Y-%m-%d", time.localtime())
 localtime = time.strftime("%Y-%m-%d %H%M%S", time.localtime())
-# filename = "C:\\Users\\allonshore\\Desktop\\text\\" + localday + "\\" + localtime + "\\"
-filename = "C:\\Users\\jiaotao\\Desktop" + localday + "\\"+localtime+"\\"
+filename = "C:\\Users\\allonshore\\Desktop\\text\\" + localday + "\\" + localtime + "\\"
+# filename = "C:\\Users\\jiaotao\\Desktop" + localday + "\\"+localtime+"\\"
 if os.path.exists(filename) == False:
     os.makedirs(filename)
+
+# 读取hotel登录账号
+# lir = []
+# liw = []
+# #读取csv中用户名和密码
+# csvFile_r = open('login_error.csv', 'r+')
+# read_vsv = csv.reader(csvFile_r)
+# for resd_line in read_vsv:
+#     lir.append(resd_line)
+# print(lir)
+# csvFile_r.close()
+
+#写入hotel登录账号
+# 将提示结果写入csv中
+# csvFile_w = open('..\login_error.csv', 'a+')
+# write_csv = csv.reader(csvFile_w)
+# write_csv.readrow
+# csvFile_w.close()
+# for w in range(len(liw)):
+#     print(liw[w])
 
 #test_hotel系统信息
 # hotel_url = "https://testhotel.guomintrip.com"
