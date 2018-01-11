@@ -6,7 +6,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from setting import *
-from locator import admin, ebooking, hotel
 
 
 class FullProcess(unittest.TestCase):
@@ -27,7 +26,7 @@ class FullProcess(unittest.TestCase):
         handles = driver.window_handles
         driver.switch_to.window(handles[0])
         driver.maximize_window()
-        driver.find_element(By.XPATH, HOTEL_LOGIN_USER).send_keys(hotel_id)
+        driver.find_element_by_xpath('/html/body/div/div[2]/form/div[1]/input').send_keys(hotel_id)
         driver.find_element_by_xpath('/html/body/div/div[2]/form/div[2]/input').send_keys(hotel_pwd)
         driver.find_element_by_xpath('/html/body/div/div[2]/form/div[4]/div/a').click()
         driver.implicitly_wait(10)

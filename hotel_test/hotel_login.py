@@ -5,9 +5,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from setting import *
 
-#分别读取登录用户名和密码
+
 class Hotel_Login(unittest.TestCase):
-    '''hotel模拟登录流程'''
+    """hotel模拟登录流程"""
 
     def setUp(self):
         self.driver = webdriver.Chrome()
@@ -28,22 +28,35 @@ class Hotel_Login(unittest.TestCase):
             driver.find_element(By.XPATH, ps_locator).send_keys(lir[i][2])
             driver.find_element(By.XPATH, ent_locator).click()
             time.sleep(3)
-            try:
-                assert driver.find_element(By.CLASS_NAME, 'layui-layer-title').text == '信息'
-                msg = driver.find_element(By.CLASS_NAME, 'layui-layer-content').text
+            exist = driver.find_element(By.CLASS_NAME, 'layui-layer-title').text
+            msg = driver.find_element(By.CLASS_NAME, 'layui-layer-content').text
+            if exist == '信息':
                 print(msg)
                 liw.append(msg)
                 js = 'var q = document.getElementsByClassName("layui-layer-btn0")[0].click();'
                 driver.execute_script(js)
-            except:
+            else:
                 err_msg = driver.find_element(By.CLASS_NAME, toast_class).text
                 print(err_msg)
                 liw.append(err_msg)
         driver.quit()
 
+        #     try:
+        #         assert driver.find_element(By.CLASS_NAME, 'layui-layer-title').text == '信息'
+        #         msg = driver.find_element(By.CLASS_NAME, 'layui-layer-content').text
+        #         print(msg)
+        #         liw.append(msg)
+        #         js = 'var q = document.getElementsByClassName("layui-layer-btn0")[0].click();'
+        #         driver.execute_script(js)
+        #     except :
+        #         err_msg = driver.find_element(By.CLASS_NAME, toast_class).text
+        #         print(err_msg)
+        #         liw.append(err_msg)
+        # driver.quit()
+
     def tearDown(self):
         self.driver.quit()
-        print("===用例执行结果===")
+        print("===用例执行结束===")
 
 
 

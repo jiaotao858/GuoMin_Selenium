@@ -1,36 +1,33 @@
 # -*- coding:utf-8 -*-
 import unittest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from setting import *
 
-#分别读取登录用户名和密码
-class Ebooking_Login(unittest.TestCase):
-    '''ebooking模拟登录流程'''
 
+class Ebooking_Login(unittest.TestCase):
+    """admin模拟登录流程,次用例未完成，查找弹窗失败"""
     def setUp(self):
         self.driver = webdriver.Chrome()
         print("===用例开始执行===")
 
     def login_text(self):
         driver = self.driver
-        driver.get(ebooking_url)
+        driver.get(admin_url)
         driver.maximize_window()
         for i in range(1, len(lir)):
-            us_locator = '//*[@id="loginId"]'
-            ps_locator = '//*[@id="password"]'
-            ent_locator = '/html/body/div[1]/div[2]/div/div/div[1]/button'
             toast_class = 'layui-layer-content'
             error_class = 'error-tips'
-            driver.find_element(By.XPATH, us_locator).clear()
-            driver.find_element(By.XPATH, ps_locator).clear()
-            driver.find_element(By.XPATH, us_locator).send_keys(lir[i][1])
-            driver.find_element(By.XPATH, ps_locator).send_keys(lir[i][2])
-            driver.find_element(By.XPATH, ent_locator).click()
+            driver.find_element(By.NAME, 'loginId').clear()
+            driver.find_element(By.NAME, 'password').clear()
+            driver.find_element(By.NAME, 'loginId').send_keys(lir[i][1])
+            driver.find_element(By.NAME, 'password').send_keys(lir[i][2])
+            driver.find_element(By.ID, 'loginBtn').click()
             time.sleep(3)
             try:
-                assert driver.find_element(By.CLASS_NAME, error_class).text != None
+                msg = driver.find_element(By.CLASS_NAME, error_class).text
+                assert msg is None
                 msg = driver.find_element(By.CLASS_NAME, error_class).text
                 print(msg)
                 liw.append(msg)
@@ -42,7 +39,7 @@ class Ebooking_Login(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        print("===用例执行结果===")
+        print("===用例执行结束===")
 
 
 
