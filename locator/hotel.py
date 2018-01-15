@@ -1,4 +1,5 @@
-# coding:uft-8
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
 
 # 登录页元素
 HOTEL_LOGIN_USER = "/html/body/div/div[2]/form/div[1]/input"   # 登录框用户名
@@ -17,8 +18,10 @@ HOTEL_ORDER = "/html/body/div[3]/div/div/div/div/div[2]/div[1]/div[2]/div[11]/a"
 # 下单页元素
 HOTEL_BUYER_NAME = "/html/body/div[3]/div/form/div[3]/ul/li[1]/div/input"    # 下单人姓名
 HOTEL_BUYER_MOBIL = "/html/body/div[3]/div/form/div[3]/ul/li[2]/div/input"   # 下单人联系电话
-HOTEL_BUYER_PAY_TYPE_ACCOUNT = "/html/body/div[3]/div/form/div[6]/div[2]/label[1]"   # 选择支付方式
-HOTEL_BUYER_SUBMIT = "/html/body/div[3]/div/form/div[6]/div[3]/button"   # 选择支付方式
+HOTEL_BUYER_PAY_TYPE_ACCOUNT = "/html/body/div[3]/div/form/div[6]/div[2]/label[1]"   # 选择支付方式-账户支付
+HOTEL_BUYER_PAY_TYPE_ZFB = "/html/body/div[3]/div/form/div[6]/div[2]/label[2]"   # 选择支付方式-支付宝支付
+HOTEL_BUYER_PAY_TYPE_WX = "/html/body/div[3]/div/form/div[6]/div[2]/label[3]"   # 选择支付方式-微信支付
+HOTEL_BUYER_SUBMIT = "/html/body/div[3]/div/form/div[6]/div[3]/button"   # 提交订单
 
 # 支付页元素
 HOTEL_PAY_BILLID = "/html/body/div[3]/div/form/div/div[2]/div/div[1]/div[2]"   # 获取订单编号

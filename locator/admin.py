@@ -1,4 +1,5 @@
-# coding:uft-8
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
 
 # 首页元素
 ADMIN_INDEX_ASSERT = "/html/body/div[1]/div[1]/div[1]/div/div[2]/h3/a"    # 当前登录用户，判断登录是否成功

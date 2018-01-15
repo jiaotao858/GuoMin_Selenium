@@ -1,6 +1,9 @@
-# coding:uft-8
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
 
 # 登录页元素
+EBOOKING_LOGIN_USER = "//*[@id='loginId']"  # 登录框用户名
+EBOOKING_LOGIN_PASSWORD = "//*[@id='password']"  # 登录框密码
 EBOOKING_LOGIN_BUTTON = "/html/body/div[1]/div[2]/div/div/div[1]/button"  # 登录页登录按钮
 
 # 首页元素
