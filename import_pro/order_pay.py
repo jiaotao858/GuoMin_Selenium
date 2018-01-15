@@ -93,7 +93,7 @@ class OrderPay(unittest.TestCase):
         driver.save_screenshot(filename + "账户付款成功.png")
         driver.find_element_by_link_text("查看订单").click()
         driver.implicitly_wait(10)
-        h_pay_suss = driver.find_element(By.XPATH, HOTEL_PAY_SURE).text
+        h_pay_suss = driver.find_element(By.XPATH, HOTEL_DETAILS_TITLE).text
         self.assertEqual(h_pay_suss, "订单信息", "订单详情查看失败！")
         driver.save_screenshot(filename + "账户支付-订单详情.png")
         print("hotel订单付款成功！")

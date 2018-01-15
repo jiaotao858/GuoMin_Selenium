@@ -28,5 +28,9 @@ HOTEL_PAY_BILLID = "/html/body/div[3]/div/form/div/div[2]/div/div[1]/div[2]"   #
 HOTEL_PAY_BUTTON = "/html/body/div[3]/div/form/div/div[3]/div[1]/button"   # 支付按钮名称
 HOTEL_PAY_SURE = "/html/body/div[3]/div/div/div/div[1]"   # 验证是否支付
 
+# 订单详情页
+HOTEL_DETAILS_TITLE = "/html/body/div[3]/div/div[1]/div"   # 订单详情页标题
+
+
 
 
