@@ -9,7 +9,8 @@ from locator.hotel import *
 from locator.admin import *
 from locator.ebooking import *
 
-class Full_Process(unittest.TestCase):
+
+class FullProcess(unittest.TestCase):
     """模拟完成下单入住流程"""
 
     def setUp(self):

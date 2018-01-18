@@ -11,6 +11,7 @@ HOTEL_INDEX_PROV = "/html/body/div[3]/div/div[1]/div[2]/form/div[1]/input"  # �
 HOTEL_INDEX_HOTEL = "/html/body/div[3]/div/div[1]/div[2]/form/div[4]/input"  # 首页酒店名称
 HOTEL_INDEX_SEARCH_BUTTON = "/html/body/div[3]/div/div[1]/div[2]/form/div[5]/button"  # 首页搜索按钮
 HOTEL_INDEX_ASSERT = "/html/body/div[2]/div/div/span[2]"    # 当前登录用户，判断登录是否成功
+HOTEL_INDEX_BILL_MANAGE = "/html/body/div[1]/div/ul/li[1]/a"    # 首页订单管理按钮
 
 # 酒店列表页元素
 HOTEL_ORDER = "/html/body/div[3]/div/div/div/div/div[2]/div[1]/div[2]/div[11]/a"    # 酒店列表下单按钮
@@ -30,6 +31,14 @@ HOTEL_PAY_SURE = "/html/body/div[3]/div/div/div/div[1]"   # 验证是否支付
 
 # 订单详情页
 HOTEL_DETAILS_TITLE = "/html/body/div[3]/div/div[1]/div"   # 订单详情页标题
+
+# 订单查询页
+HOTEL_BILL_MANAGE_BILLNO = "/html/body/div[3]/div[1]/form/div[2]/div[1]/input"  # 订单管理页订单编号框
+HOTEL_BILL_MANAGE_BUTTON = "/html/body/div[3]/div[1]/form/div[3]/button"  # 订单管理页查询按钮
+HOTEL_BILL_MANAGE_STATUS = "/html/body/div[3]/div[2]/div/div/div/table/tbody/tr[1]/td[9]"  # 订单管理页订单状态（预留房/非预留房）
+HOTEL_BILL_MANAGE_CLROOM = "/html/body/div[3]/div[2]/div/div/div/table/tbody/tr[1]/td[10]/a[3]/div"     # 预留房点击按钮
+HOTEL_BILL_MANAGE_OPROOM = "/html/body/div[3]/div[2]/div/div/div/table/tbody/tr[1]/td[10]/a[2]/div"     # 非预留房点击按钮
+HOTEL_BILL_MANAGE_SURERE = ""
 
 
 

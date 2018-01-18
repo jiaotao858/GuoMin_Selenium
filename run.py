@@ -6,7 +6,7 @@ from ebooking_test import ebooking_login
 
 def suite():
     suitetest = unittest.TestSuite()
-    suitetest.addTest(full_process.Full_Process('test_full_process'))
+    suitetest.addTest(full_process.FullProcess('test_full_process'))
     print("<现在执行下单用例集合>")
     return suitetest
 
@@ -14,15 +14,15 @@ def suite():
 def suite1():
     suitetest1 = unittest.TestSuite()
     suitetest1.addTest(order_pay.OrderPay('pay_account'))
-    # suitetest1.addTest(order_pay.OrderPay('pay_weixin'))
-    # suitetest1.addTest(order_pay.OrderPay('pay_zhifubao'))
+    suitetest1.addTest(order_pay.OrderPay('pay_weixin'))
+    suitetest1.addTest(order_pay.OrderPay('pay_zhifubao'))
     print("<现在执行支付方式用例集合>")
     return suitetest1
 
 
 def suite2():
     suitetest2 = unittest.TestSuite()
-    suitetest2.addTest(order_refund.Order_Refund('hotel_refund'))
+    suitetest2.addTest(order_refund.OrderRefund('hotel_refund'))
     print("<现在执行退款用例集合>")
     return suitetest2
 
