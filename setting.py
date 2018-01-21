@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import time,os,csv
+import time
+import os
+import csv
 
 # 设置图片保存路径
 localday = time.strftime("%Y-%m-%d", time.localtime())
 localtime = time.strftime("%Y-%m-%d %H%M%S", time.localtime())
 # filename = "C:\\Users\\allonshore\\Desktop\\text\\" + localday + "\\" + localtime + "\\"
-filename = "C:\\Users\\jiaotao\\Desktop" + localday + "\\"+localtime+"\\"
+filename = "C:\\Users\\jiaotao\\Desktop\\text\\" + localday + "\\"+localtime+"\\"
 if os.path.exists(filename) is False:
     os.makedirs(filename)
 

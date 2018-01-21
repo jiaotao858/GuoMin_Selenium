@@ -1,5 +1,5 @@
 import unittest
-from import_pro import full_process, order_pay, order_refund
+from import_pro import full_process, order_pay, order_refund, order_refund_admin
 from hotel_test import hotel_login
 from ebooking_test import ebooking_login
 
@@ -22,7 +22,8 @@ def suite1():
 
 def suite2():
     suitetest2 = unittest.TestSuite()
-    suitetest2.addTest(order_refund.OrderRefund('hotel_refund'))
+    # suitetest2.addTest(order_refund.OrderRefund('hotel_refund'))
+    suitetest2.addTest(order_refund_admin.AdminRefund('admin_refund'))
     print("<现在执行退款用例集合>")
     return suitetest2
 
@@ -44,4 +45,4 @@ def suite3():
 
 if __name__ == '__main__':
     runner = unittest.TextTestRunner()
-    runner.run(suite1())
+    runner.run(suite2())

@@ -3,8 +3,6 @@
 
 import unittest
 from selenium import webdriver
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 from setting import *
 from selenium.webdriver.common.by import By
 from locator.hotel import *
@@ -12,7 +10,7 @@ from locator.admin import *
 
 
 class OrderRefund(unittest.TestCase):
-    """账户退单操作"""
+    """hotel账户退单操作"""
 
     def setUp(self):
         self.driver = webdriver.Chrome()
@@ -67,6 +65,7 @@ class OrderRefund(unittest.TestCase):
         driver.find_element(By.LINK_TEXT, "订单查询").click()
         # 搜索订单
         driver.find_element(By.XPATH, ADMIN_BILL_SEARCH).send_keys(billId)
+        driver.find_element(By.XPATH, ADMIN_BILL_BUTTON).click()
         # 确认订单
         driver.find_element(By.LINK_TEXT, "查看").click()
         driver.find_element(By.LINK_TEXT, "确认hold房").click()
@@ -99,57 +98,58 @@ class OrderRefund(unittest.TestCase):
         print("hotel订单付款成功！")
 
         """hote系统退单操作"""
-        driver.find_element_by_xpath("/html/body/div[1]/div/ul/li[1]/a").click()
+        driver.find_element(By.XPATH, HOTEL_INDEX_BILL_MANAGE).click()
         driver.find_element_by_link_text("酒店订单").click()
         driver.implicitly_wait(10)
-        driver.find_element_by_xpath("/html/body/div[3]/div[1]/form/div[2]/div[1]/input").send_keys(billId)
-        driver.find_element_by_xpath("/html/body/div[3]/div[1]/form/div[3]/button").click()
+        driver.find_element(By.XPATH, HOTEL_BILL_MANAGE_BILLNO).send_keys(billId)
+        driver.find_element(By.XPATH, HOTEL_BILL_MANAGE_BUTTON).click()
         time.sleep(3)
         # 根据预留房和非预留房执行方式
-        refund_status = driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/div/div/table/tbody/tr[1]/td[9]").text
+        refund_status = driver.find_element(By.XPATH, HOTEL_BILL_MANAGE_STATUS).text
         if refund_status == "已确认":
-            driver.find_element_by_xpath(
-                "/html/body/div[3]/div[2]/div/div/div/table/tbody/tr[1]/td[10]/a[3]/div").click()
+            driver.find_element(
+                By.XPATH, HOTEL_BILL_MANAGE_CLROOM).click()
             print("订单类型-预留房")
         elif refund_status == "待确认":
-            driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/div/div/table/tbody/tr[1]/td[10]/a[2]/div").click()
+            driver.find_element(
+                By.XPATH, HOTEL_BILL_MANAGE_OPROOM).click()
             print("订单类型-非预留房")
         else:
             driver.quit()
             print("退单操作执行不成功")
         # 确认申请退单
-        driver.find_element_by_xpath("/html/body/div[3]/div[2]/div[3]/div[2]/button[2]").click()
+        driver.find_element(By.XPATH, HOTEL_BILL_MANAGE_SURERE).click()
         driver.refresh()
         driver.implicitly_wait(10)
-        refund_status_sec = driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/div/div/table/tbody/tr[1]/td[9]").text
-        self.assertEqual(refund_status_sec,"（退款中）已确认","退款状态不正确")
+        refund_status_sec = driver.find_element(By.XPATH, HOTEL_BILL_MANAGE_STATUS).text
+        self.assertEqual(refund_status_sec, "（退款中）已确认", "退款状态不正确")
         driver.save_screenshot(filename+"订单退款中.png")
         print("hotel申请退款成功！")
 
         """admin系统确认同意退单"""
         driver.switch_to.window(handles[1])
         driver.find_element_by_link_text("退款订单").click()
-        driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/form/div[1]/input[1]").send_keys(billId)
-        driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/form/div[1]/input[3]").click()
+        driver.find_element(By.XPATH, ADMIN_BILL_REFUND_BILLNO).send_keys(billId)
+        driver.find_element(By.XPATH, ADMIN_BILL_REFUND_SEARCH).click()
         driver.implicitly_wait(10)
-        locator = driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/table/tbody/tr/td[1]").text
-        self.assertEqual(locator,billId,"查询退单失败！")
+        locator = driver.find_element(By.XPATH, ADMIN_BILL_REFUND_SUREID).text
+        self.assertEqual(locator, billId, "查询退单失败！")
+
         driver.implicitly_wait(10)
-        driver.find_element_by_xpath("/html/body/div[1]/div/div[3]/table/tbody/tr[1]/td[10]/a[1]").click()
+        driver.find_element(By.XPATH, ADMIN_BILL_REFUND_AGREE).click()
         driver.implicitly_wait(10)
-        driver.find_element_by_class_name('layui-layer-btn1').click()
-        # driver.execute_script("document.getElementsByClassName('layui-layer-btn1')[0].click()")
+        driver.find_element(By.CLASS_NAME, ADMIN_BILL_REFUND_SECONDAGREE).click()
         time.sleep(3)
-        print("退款提示内容： "+driver.find_element_by_class_name('layui-layer-content').text)
+        print("退款提示内容： "+driver.find_element(By.CLASS_NAME, 'layui-layer-content').text)
         driver.find_element_by_link_text("订单查询").click()
-        driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div/div[2]/div[1]/input").send_keys(billId)
-        driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div/div[2]/div[3]/input").click()
+        driver.find_element(By.XPATH, ADMIN_BILL_SEARCH).send_keys(billId)
+        driver.find_element(By.XPATH, ADMIN_BILL_BUTTON).click()
         driver.refresh()
         time.sleep(5)
         driver.refresh()
         driver.implicitly_wait(10)
-        a_ord_sta1 = driver.find_element_by_xpath("/html/body/div[1]/div[3]/form/div[2]/table/tbody/tr[2]/td[5]/span").text
-        self.assertEqual(a_ord_sta1,"已退款","退单处理失败，请查看！")
+        a_ord_sta1 = driver.find_element(By.XPATH, ADMIN_BILL_STATUS).text
+        self.assertEqual(a_ord_sta1, "已退款", "退单处理失败，请查看！")
         time.sleep(3)
         driver.refresh()
         driver.save_screenshot(filename+"订单退款成功.png")

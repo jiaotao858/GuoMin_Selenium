@@ -66,6 +66,7 @@ class OrderPay(unittest.TestCase):
         driver.find_element(By.LINK_TEXT, "订单查询").click()
         # 搜索订单
         driver.find_element(By.XPATH, ADMIN_BILL_SEARCH).send_keys(billId)
+        driver.find_element(By.XPATH, ADMIN_BILL_BUTTON).click()
         # 确认订单
         driver.find_element(By.LINK_TEXT, "查看").click()
         driver.find_element(By.LINK_TEXT, "确认hold房").click()
